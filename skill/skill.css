@@ -1,0 +1,219 @@
+/* Global body and html styling */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    font-family: "Edu AU VIC WA NT Dots", cursive;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    background-color: hsl(0, 0%, 7%);
+}
+
+h1 {
+    font-family: "Edu AU VIC WA NT Dots", cursive;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* Transparent Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid #1abc9c;
+    backdrop-filter: blur(10px); /* Optional blur for a glass-like effect */
+}
+
+header .logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+header nav a {
+    margin: 0 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover,
+header nav a.active {
+    color: #1abc9c;
+    font-weight: bold;
+}
+
+/* Responsive Header */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+    }
+
+    header nav a {
+        margin: 5px 0;
+    }
+}
+
+/* Section for skills showcase */
+.Section_top {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    justify-content: center;
+    animation: change 30s ease-in-out infinite;
+}
+
+.Section_top::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 10px solid #1abc9c;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+}
+
+.content h1 {
+    color: #fff;
+    font-size: 60px;
+    letter-spacing: 15px;
+}
+
+.content h1 span {
+    color: #111;
+}
+
+/* Glowing button effect */
+.content a {
+    margin: 20px;
+    padding: 15px 40px;
+    border: none;
+    outline: none;
+    color: #FFF;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 12px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    transition: color 2s ease-in-out;
+}
+
+.content a::before {
+    content: "";
+    background: linear-gradient(45deg, #C2FFC7, #9EDF9C, #62825D, #526E48,#3a4f32);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 600%;
+    z-index: -1;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    filter: blur(8px);
+    animation: glowing 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 12px;
+    opacity: 0;
+}
+
+.content a::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #0000004e;
+    left: 0;
+    top: 0;
+    border-radius: 12px;
+    transition: background 0.3s ease;
+}
+
+.content a:hover::before {
+    opacity: 1;
+}
+
+.content a:active::after {
+    background: transparent;
+}
+
+.content a:active {
+    color: #000;
+    font-weight: bold;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+@keyframes change {
+    0% { background-image: url('bg.jpeg'); }
+    20% { background-image: url('6.jpeg'); }
+    40% { background-image: url('gamedev.jpeg'); }
+    60% { background-image: url('model.jpeg'); }
+    80% { background-image: url('poetry.jpeg'); }
+    100% { background-image: url('story.jpeg'); }
+    120% { background-image: url('5.jpeg'); }
+}
+
+.skills {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    margin-top: 10px;
+    position: relative;
+}
+
+.skills .skill {
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+.skills.loaded .skill {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .skill {
+        font-size: 1em;
+        padding: 10px 15px;
+    }
+}
